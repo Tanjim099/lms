@@ -3,6 +3,7 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import Footer from "../components/Footer";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/slices/authSlice';
 
 function HomeLayout({ children }) {
 
@@ -27,11 +28,13 @@ function HomeLayout({ children }) {
 
     }
 
-    function onLogout(e) {
+    async function onLogout(e) {
         e.preventDefault();
 
-        // todo
-        navigate("/")
+        const response = await dispatch(logout());
+        if (response?.payload?.data)
+            // todo
+            navigate("/")
     }
     return (
         <div className="min-h-[90vh] ">
