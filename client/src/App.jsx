@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import Notfound from './pages/Notfound'
 import Signup from './pages/Signup'
+import Signin from './pages/Signin'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<AboutUs />} />
       <Route path='/signup' element={<Signup />} />
+      <Route path='/login' element={<Signin />} />
       <Route path='*' element={<Notfound />} />
     </Routes>
   )

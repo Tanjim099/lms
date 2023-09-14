@@ -10,14 +10,31 @@ const initialState = {
 
 export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
     try {
-        const response = axiosInstance.post("user/register", data);
-
-        toast.promise(response, {
+        const res = axiosInstance.post("user/register", data);
+        toast.promise(res, {
             loading: "Wait! creating your account",
             success: (data) => {
                 return data?.data?.message;
             },
-            error: "Failed to create your account"
+            error: "Failed to create account"
+        });
+        return (await res).data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message);
+    }
+})
+
+
+export const login = createAsyncThunk("/auth/login", async (data) => {
+    try {
+        const response = axiosInstance.post("user/login", data);
+
+        toast.promise(response, {
+            loading: "Wait! authentcating your account",
+            success: (data) => {
+                return data?.data?.message;
+            },
+            error: "Failed to authentcate your account"
         });
         return await response;
     } catch (error) {
@@ -28,7 +45,17 @@ export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {}
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(login.fulfilled, (state, action) => {
+            localStorage.setItem("data", JSON.stringify(action?.payload?.data));
+            localStorage.setItem("isLoggedIn", true);
+            localStorage.setItem("role", action?.payload?.data?.user?.role);
+            state.isLoggedIn = true;
+            state.data = action?.payload?.data?.user;
+            state.role = action?.payload?.data?.user?.role;
+        })
+    }
 });
 
 export default authSlice.reducer;
