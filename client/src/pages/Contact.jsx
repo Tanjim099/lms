@@ -67,7 +67,7 @@ function Contact() {
                         <FiPhone />
                         <p>+91-9988221100</p>
                     </a>
-                    <img src="https://pwskills.com/images/contactUs/employeesHelpingCustomers.svg" alt="" />
+                    <img src="https://pwskills.com/images/homePage/hero-shadow.png" alt="" />
                 </div>
                 <div className="w-1/2 m-auto">
                     <form onSubmit={onFormSubmit} noValidate className="flex w-full flex-col item-center justify-center gap-2 p-8 border rounded-md text-white ">
