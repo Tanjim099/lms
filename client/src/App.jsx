@@ -9,12 +9,14 @@ import Notfound from './pages/Notfound'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Contact from './pages/Contact'
+import CourseList from './pages/Course/CourseList'
 
 function App() {
 
   return (
     <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/courses' element={<CourseList />} />
       <Route path='/about' element={<AboutUs />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/signup' element={<Signup />} />
