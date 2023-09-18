@@ -15,6 +15,7 @@ function CourseList() {
 
     useEffect(() => {
         loadCourses();
+        courseData
     }, []);
 
     return (
