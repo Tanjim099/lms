@@ -55,6 +55,7 @@ function Signin() {
 
         const response = await dispatch(login(signinDetails))
         console.log(response);
+        console.log(response?.data?.payload?.token)
         if (response?.payload?.data) {
             navigate("/")
         }
