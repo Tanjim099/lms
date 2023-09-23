@@ -5,7 +5,7 @@ import axiosInstance from "../../config/axiosInstance";
 const initialState = {
     key: "",
     subscription_id: "",
-    isPaymentVerifield: false,
+    isPaymentVerified: false,
     allPayments: {},
     finalMonths: {},
     monthlySalesRecord: []
@@ -36,7 +36,7 @@ export const verifyUserPayment = createAsyncThunk("/payments/verify", async (dat
         const response = await axiosInstance.post("/payments/verify", {
             razorpay_payment_id: data.razorpay_payment_id,
             razorpay_subscriptoin_id: data.razorpay_subscriptoin_id,
-            razorpay_signature: data.razorpay_signature
+            razorpay_signature_id: data.razorpay_signature_id
         });
         return response.data;
     } catch (error) {
@@ -92,11 +92,11 @@ const razorpaySlice = createSlice({
             })
             .addCase(verifyUserPayment.fulfilled, (state, action) => {
                 toast.success(action?.payload?.message)
-                state.isPaymentVerifield = action?.payload?.success
+                state.isPaymentVerified = action?.payload?.success
             })
             .addCase(verifyUserPayment.rejected, (state, action) => {
                 toast.success(action?.payload?.message)
-                state.isPaymentVerifield = action?.payload?.success
+                state.isPaymentVerified = action?.payload?.success
             })
             .addCase(getPaymentRocord.fulfilled, (state, action) => {
                 state.allPayments = action?.payload?.allPayments;
