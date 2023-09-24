@@ -11,6 +11,7 @@ const initialState = {
 export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
     try {
         const res = axiosInstance.post("/user/register", data);
+        localStorage.setItem('token', res.data.token);
         toast.promise(res, {
             loading: "Wait! creating your account",
             success: (data) => {
