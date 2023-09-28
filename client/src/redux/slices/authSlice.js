@@ -5,7 +5,7 @@ import axiosInstance from "../../config/axiosInstance"
 const initialState = {
     isLoggedIn: localStorage.getItem("isLoggedIn") || false,
     role: localStorage.getItem("role") || "",
-    data: localStorage.getItem("data") == undefined ? JSON.parse(localStorage.getItem("data")) : {}
+    data: localStorage.getItem("data") !== undefined ? JSON.parse(localStorage.getItem("data")) : {}
 }
 
 export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
@@ -65,7 +65,7 @@ export const logout = createAsyncThunk("/auth/logout", async () => {
 
 export const updateProfile = createAsyncThunk("/user/update/profile", async (data) => {
     try {
-        const response = axiosInstance.put(`/user/update/${data[0]}`, data[1]);
+        const response = axiosInstance.put(`user/update/${data[0]}`, data[1]);
 
         toast.promise(response, {
             loading: "Wait! profile update in prograss",
@@ -83,8 +83,8 @@ export const updateProfile = createAsyncThunk("/user/update/profile", async (dat
 
 export const getUserData = createAsyncThunk("/user/details", async () => {
     try {
-        const response = axiosInstance.get("/user/me");
-        return (await response).data;
+        const response = axiosInstance.get("user/me");
+        return (await response).user;
     } catch (error) {
         toast.error(error?.response?.data?.message);
     }

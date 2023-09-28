@@ -53,7 +53,7 @@ function EditProfile() {
         const formData = new FormData();
         formData.append("FullName", data.fullName);
         formData.append("avatar", data.avatar);
-
+        console.log(formData)
         await dispatch(updateProfile([data.userId, formData]));
 
         await dispatch(getUserData())
