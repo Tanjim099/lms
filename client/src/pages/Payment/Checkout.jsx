@@ -19,7 +19,11 @@ function Checkout() {
         razorpay_subscriptoin_id: "",
         razorpay_signature_id: ""
     }
+    console.log(paymentDetails)
+    console.log(useSelector((state) => state?.razorpay))
 
+    console.log(razorpayKey)
+    console.log(subscription_id)
     async function handleSubscription(e) {
         e.preventDefault();
         if (!razorpayKey || !subscription_id) {
@@ -54,13 +58,14 @@ function Checkout() {
         paymentObject.open()
     }
 
+
     async function load() {
         await dispatch(getRazorPayId())
         await dispatch(purchaseCourseBundle())
     }
     useEffect(() => {
         load()
-    })
+    }, [])
     return (
         <HomeLayout>
             <form
