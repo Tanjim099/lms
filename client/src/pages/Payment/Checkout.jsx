@@ -17,13 +17,14 @@ function Checkout() {
     const paymentDetails = {
         razorpay_payment_id: "",
         razorpay_subscriptoin_id: "",
-        razorpay_signature_id: ""
+        razorpay_signature: ""
     }
     console.log(paymentDetails)
     console.log(useSelector((state) => state?.razorpay))
 
     console.log(razorpayKey)
     console.log(subscription_id)
+
     async function handleSubscription(e) {
         e.preventDefault();
         if (!razorpayKey || !subscription_id) {
@@ -44,7 +45,7 @@ function Checkout() {
             },
             handler: async function (response) {
                 paymentDetails.razorpay_payment_id = response.razorpay_payment_id;
-                paymentDetails.razorpay_signature_id = response.razorpay_signature_id;
+                paymentDetails.razorpay_signature = response.razorpay_signature;
                 paymentDetails.razorpay_subscriptoin_id = response.razorpay_subscriptoin_id;
 
                 toast.success("Payment successfull")

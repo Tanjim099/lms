@@ -14,18 +14,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllCourses } from '../redux/slices/courseSlice';
 function Home() {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-    // const { courseData } = useSelector((state) => state.course);
+    const { courseData } = useSelector((state) => state.course);
 
-    // async function loadCourses() {
-    //     await dispatch(getAllCourses());
-    // }
+    async function loadCourses() {
+        await dispatch(getAllCourses());
+    }
 
-    // useEffect(() => {
-    //     loadCourses();
-    //     courseData
-    // }, []);
+    useEffect(() => {
+        loadCourses();
+        courseData
+    }, []);
 
     return (
         <HomeLayout>
