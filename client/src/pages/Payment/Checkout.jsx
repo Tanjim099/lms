@@ -51,7 +51,7 @@ function Checkout() {
                 toast.success("Payment successfull")
 
                 const res = await dispatch(verifyUserPayment(paymentDetails))
-                res?.payload?.success ? navigate("/checkout/suceess") : navigate("/checkout/fail")
+                res?.payload?.success ? navigate("/checkout/success") : navigate("/checkout/fail")
             }
         }
 

@@ -13,19 +13,9 @@ import CourseCardSlider from '../components/CourseCardSlider';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllCourses } from '../redux/slices/courseSlice';
+import UnlimitedLiveLearning from '../components/UnlimitedLiveLearning';
+import CourseFilter from '../components/CourseFilter';
 function Home() {
-    const dispatch = useDispatch();
-
-    const { courseData } = useSelector((state) => state.course);
-
-    async function loadCourses() {
-        await dispatch(getAllCourses());
-    }
-
-    useEffect(() => {
-        loadCourses();
-        courseData
-    }, []);
 
     return (
         <HomeLayout>
@@ -53,6 +43,8 @@ function Home() {
                 </div>
             </div>
             <CourseImportant />
+            <UnlimitedLiveLearning className="bg-red-400" />
+            <CourseFilter className='bg-[#182238]' />
             {/* <div className="mb-10 flex flex-wrap gap-10">
                 {
                     courseData?.map((element) => {

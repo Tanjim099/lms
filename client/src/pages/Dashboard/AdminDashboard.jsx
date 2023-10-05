@@ -138,7 +138,7 @@ function AdminDashboard() {
                     </div>
                     <table className="table overflow-x-scroll text-white border-none">
                         <thead className="border-none text-white">
-                            <tr>
+                            <tr className="text-lg">
                                 <th>S No</th>
                                 <th>Course Title</th>
                                 <th>Course Category</th>
@@ -181,6 +181,7 @@ function AdminDashboard() {
                                             >
                                                 <BsCollectionPlay />
                                             </button>
+
                                             <button
                                                 className="bg-red-500 hover:bg-red-600 transition-all ease-in-out duration-300 text-xl py-2 px-4 rounded-md font-bold"
                                                 onClick={() => onCourseDelete(course._id)}
