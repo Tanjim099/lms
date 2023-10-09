@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import HomeLayout from "../layouts/HomeLayout";
-import homePageMainImage from '../assets/Images/homePageMainImage.png'
+import homePage from '../assets/Images/homePage.png'
 import CourseCard from '../components/CourseCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -15,31 +15,32 @@ import { useEffect } from 'react';
 import { getAllCourses } from '../redux/slices/courseSlice';
 import UnlimitedLiveLearning from '../components/UnlimitedLiveLearning';
 import CourseFilter from '../components/CourseFilter';
+import HiringPartner from '../components/HiringPartner';
 function Home() {
 
     return (
         <HomeLayout>
             <div className="pt-10 text-black flex flex-row items-center justify-center gap-10 mx-16 h-[90vh]">
                 <div className="w-1/2 space-y-6">
-                    <h1 className="text-black text-5xl font-semibold [text-shadow:_0_1px_0_rgb(0_0_0_/_20%)]">Find out best <span className="text-yellow-500 font-bold">Online courses</span></h1>
-                    <p className="text-black text-xl text-grey-200 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
+                    <h1 className="font-['Sorce Sans Pro'] font-semibold text-[32px] lg:text-[64px] text-[#FBFAFFE6]">Find out best <span className="text-[#0074e9] font-bold">Online courses</span></h1>
+                    <p className="font-['Nunito'] font-regular text-[#FBFAFFE6] text-[14px] lg:text-[20px] mt-[8px]">
                         We have a large library of courses taugh by highly skilled and quilified at a very affordable cost.
                     </p>
                     <div className='space-x-6'>
                         <Link to="/courses">
-                            <button className="bg-yellow-500 px-5 py-3 rounded-md font-semibold text-lg text-black cursor-pointer hover:bg-yellow-600 transition-all ease-in-out duration-300">
+                            <button className="bg-white px-5 py-3 rounded-md font-semibold text-lg text-black cursor-pointer hover:bg-[#0074e9] hover:text-white transition-all ease-in-out duration-300">
                                 Explore courses
                             </button>
                         </Link>
                         <Link to="/contact">
-                            <button className=" border border-yellow-500 px-5 py-3 rounded-md font-semibold text-lg text-blck cursor-pointer hover:bg-yellow-600 transition-all ease-in-out duration-300">
+                            <button className=" border border-white px-5 py-3 rounded-md font-semibold text-lg text-white cursor-pointer hover:bg-[#0074e9] transition-all ease-in-out duration-300">
                                 Contact Us
                             </button>
                         </Link>
                     </div>
                 </div>
                 <div className='w-1/2 flex items-center justify-center'>
-                    <img src={homePageMainImage} alt="" />
+                    <img src={homePage} alt="" />
                 </div>
             </div>
             <CourseImportant />
@@ -52,7 +53,8 @@ function Home() {
                     })
                 }
             </div> */}
-            <Ecosystem />
+            {/* <Ecosystem /> */}
+            <HiringPartner />
             <Swiper
                 effect={'cards'}
                 grabCursor={true}

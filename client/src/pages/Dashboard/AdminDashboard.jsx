@@ -32,7 +32,7 @@ function AdminDashboard() {
         datasets: [
             {
                 label: "User Details",
-                data: [allUsersCount, 10], //subscribedCount
+                data: [allUsersCount, subscribedCount], //subscribedCount
                 backgroundColor: ["yellow", "green"],
                 borderWidth: 1,
                 borderColor: ["yellow", "green"]

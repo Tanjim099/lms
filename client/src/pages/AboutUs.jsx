@@ -11,7 +11,7 @@ function AboutUs() {
             <div className="flex flex-col text-white pl-20 pt-20">
                 <div className="flex items-center gap-5 mx-10">
                     <section className="w-1/2 spa-y-10">
-                        <h1 className="text-5xl text-yellow-500 font-semibold">
+                        <h1 className="text-5xl text-[#0074e9] font-semibold">
                             Afforadable and quality education
                         </h1>
                         <p className="text-xl text-gray-200 my-4">

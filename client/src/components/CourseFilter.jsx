@@ -9,29 +9,34 @@ function CourseFilter() {
     const { courseData } = useSelector((state) => state.course);
 
     console.log(courseData)
-    const dsaCourse = courseData.filter((course) => {
-        return course.category == "DSA"
-    })
+
     const [filteredData, setFilteredData] = useState([]);
 
     function handleFilter(e) {
         console.log(e.target.id);
 
-        const newCourseData = courseData.filter((course) => {
+        const newCourseData = courseData?.filter((course) => {
 
             return course.category == e.target.id
         })
         // setFilteredData((data) => [...data, ...newCourseData])
-        setFilteredData([...newCourseData])
+        newCourseData ? setFilteredData([...newCourseData]) : ""
     }
 
     function loadCourses() {
         dispatch(getAllCourses());
+
+
     }
 
     useEffect(() => {
         loadCourses();
     }, []);
+
+    useEffect(() => {
+        const obj = { target: { id: "DSA" } }
+        handleFilter(obj)
+    }, [courseData])
     return (
         <div className=" mt-5 m-auto py-4 px-6 bg-[#182238]">
             <div className="w-[90%] m-auto">
@@ -42,7 +47,7 @@ function CourseFilter() {
                         <h3 className="text-2xl text-white font-semibold mb-4">Categories</h3>
                         <hr className="mt-5" />
                         <div className="mt-6 flex flex-col items-start gap-2">
-                            <span className="bg-[#0096ff] py-1 px-2 rounded-3xl text-white" id="dsa" onClick={handleFilter}>Data Structures & Algorithms</span>
+                            <span className="bg-[#0096ff] py-1 px-2 rounded-3xl text-white" id="DSA" onClick={handleFilter}>Data Structures & Algorithms</span>
                             <span className="bg-[#0096ff] py-1 px-2  rounded-3xl text-white" id="program" onClick={handleFilter}>Programming language</span>
                             <span className="bg-[#0096ff] py-1 px-2  rounded-3xl text-white" id="database" onClick={handleFilter}>Database</span>
                             <span className="bg-[#0096ff] py-1 px-2 rounded-3xl text-white" id="Computer Science" onClick={handleFilter}>Data Science</span>
@@ -52,7 +57,7 @@ function CourseFilter() {
                             <span className="bg-[#0096ff] py-1 px-2  rounded-3xl text-white" id="Digital Marketing" onClick={handleFilter}>Digital Marketing</span>
                         </div>
                     </div>
-                    <div className="w-[76%] bg-red-400 flex flex-wrap gap-5">
+                    <div className="w-[76%]  flex flex-wrap gap-5">
                         {
                             filteredData?.map((element) => {
                                 return <CourseCard key={element._id} data={element} />

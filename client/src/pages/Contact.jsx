@@ -5,6 +5,7 @@ import { isEmail } from "../helpers/regexMatcher";
 import axios from "axios";
 import axiosInstance from "../config/axiosInstance";
 import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs"
+import contactImage from "../assets/Images/contactImage.png"
 import { FiPhone, FiVoicemail } from "react-icons/fi";
 
 function Contact() {
@@ -56,18 +57,20 @@ function Contact() {
     return (
         <HomeLayout>
             <div className="flex items-center justify-center h-[100vh] w-4/5 m-auto">
-                <div className="w-1/2 m-auto">
-                    <h1 className="text-white text-4xl font-semibold">Contact Us</h1>
-                    <p className=" mt-4 text-yellow-50">For any queries, Please reach out to us. Our Support team <br /> will get back to you within 24 hours.</p>
-                    <a href="mailto:contact@gmail.com" className="flex items-center text-white mt-4 gap-2">
-                        <FiVoicemail />
-                        <p>contact@gmail.com</p>
-                    </a>
-                    <a href="tel:+919988221100" className="flex items-center text-white mt-2 gap-2">
-                        <FiPhone />
-                        <p>+91-9988221100</p>
-                    </a>
-                    <img src="https://pwskills.com/images/homePage/hero-shadow.png" alt="" />
+                <div className="w-1/2 m-auto flex flex-col gap-6">
+                    <div>
+                        <h1 className="text-white text-4xl font-semibold">Contact Us</h1>
+                        <p className=" mt-4 text-yellow-50">For any queries, Please reach out to us. Our Support team <br /> will get back to you within 24 hours.</p>
+                        <a href="mailto:contact@gmail.com" className="flex items-center text-white mt-4 gap-2">
+                            <FiVoicemail />
+                            <span>contact@gmail.com</span>
+                        </a>
+                        <a href="tel:+919988221100" className="flex items-center text-white mt-2 gap-2">
+                            <FiPhone />
+                            <p>+91-9988221100</p>
+                        </a>
+                    </div>
+                    <img src={contactImage} alt="" className="w-[400px]" />
                 </div>
                 <div className="w-1/2 m-auto">
                     <form onSubmit={onFormSubmit} noValidate className="flex w-full flex-col item-center justify-center gap-2 p-8 border rounded-md text-white ">
