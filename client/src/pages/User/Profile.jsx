@@ -1,11 +1,21 @@
 import { useDispatch, useSelector } from "react-redux"
 import HomeLayout from "../../layouts/HomeLayout";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { getUserData } from "../../redux/slices/authSlice";
 
 function Profile() {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state?.auth?.data);
     console.log(userData)
+    console.log(userData?.fullName)
+    console.log(userData?.subscription?.status)
+    async function ongetProfile() {
+        await dispatch(getUserData())
+    }
+    useEffect(() => {
+        ongetProfile
+    }, [])
     return (
         <HomeLayout>
             <div className="min-h-[90vh] flex items-center justify-center">
@@ -20,7 +30,7 @@ function Profile() {
                     <div className="grid grid-cols-2">
                         <p>Email : </p><span>{userData?.email}</span>
                         <p>Role : </p><span>{userData?.role}</span>
-                        <p>Subsription : </p><span>{userData?.status === "ACTIVE" ? "Active" : "Inactive"}</span>
+                        <p>Subsription : </p><span>{userData?.subscription?.status === "active" ? "Active" : "Inactive"}</span>
                     </div>
                     <div className="flex items-center justify-center gap-2">
                         <Link
@@ -39,7 +49,7 @@ function Profile() {
                         </Link>
                     </div>
                     {
-                        userData?.state !== "ACTIVE" && (
+                        userData?.status !== "active" && (
                             <button className="w-full bg-red-600 hover:bg-red-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2">
                                 Cancel Subscription
                             </button>

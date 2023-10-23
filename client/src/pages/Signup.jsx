@@ -71,8 +71,8 @@ function Signup() {
 
         const response = await dispatch(createAccount(formData))
         console.log(response);
-        if (response?.payload?.data) {
-            navigate("/")
+        if (response?.payload?.success == true) {
+            navigate("/login")
         }
         setSignupDetails(
             {

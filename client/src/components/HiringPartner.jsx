@@ -65,9 +65,6 @@ function HiringPartner() {
         },
     ])
 
-    // const arrowLeft = document.getElementById("arrowLeft");
-    // const arrowRight = document.getElementById("arrowRight");
-
 
     const cards = document.getElementById("cards");
     function arrowLeft() {
@@ -77,10 +74,6 @@ function HiringPartner() {
     function arrowRight() {
         cards.scrollLeft += 400
     }
-    // const cards = document.getElementById("cards");
-    // arrowLeft.addEventListener("click", () => {
-    //     cards.scrollLeft -= 400
-    // })
 
     return (
         <div className="w-[100%]">

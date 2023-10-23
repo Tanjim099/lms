@@ -11,7 +11,7 @@ const initialState = {
 export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
     try {
         const res = axiosInstance.post("/user/register", data);
-        localStorage.setItem('token', res.data.token);
+        // localStorage.setItem('token', res.data.token);
         toast.promise(res, {
             loading: "Wait! creating your account",
             success: (data) => {
@@ -112,6 +112,10 @@ const authSlice = createSlice({
                 state.data = {};
             })
             .addCase(getUserData.fulfilled, (state, action) => {
+                console.log(action)
+                console.log("yes")
+                console.log(action)
+                // console.log(data);
                 if (!action?.payload?.data) return;
                 localStorage.setItem("data", JSON.stringify(action?.payload?.data));
                 localStorage.setItem("isLoggedIn", true);
@@ -119,6 +123,8 @@ const authSlice = createSlice({
                 state.isLoggedIn = true;
                 state.data = action?.payload?.data?.user;
                 state.role = action?.payload?.data?.user?.role;
+                console.log(action?.payload?.data?.user?.role)
+                console.log(data);
             })
     }
 });

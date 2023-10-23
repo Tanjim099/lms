@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/slices/authSlice';
+import Navbar from '../components/Navbar';
 
 function HomeLayout({ children }) {
 
@@ -37,69 +38,68 @@ function HomeLayout({ children }) {
             navigate("/")
     }
     return (
-        <div className="min-h-[90vh] ">
-            <div className="drawer absolute left-0 z-50 w-full">
+        <div className="min-h-[90vh] sticky top-0">
+            <div className="drawer absolute left-0 z-50 w-auto">
                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
-                    <label htmlFor="my-drawer" >
-                        <FiMenu onClick={changeWidth} size={"32px"} className='text-black font-bold m-4' />
+                    <label htmlFor="my-drawer" className=''>
+                        <FiMenu onClick={changeWidth} size={"32px"} className='font-bold text-black m-4' />
                     </label>
                 </div>
                 <div className="drawer-side w-0">
                     <label htmlFor="my-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 h-[100%] w-48 sm:w-80 bg-base-200 text-base-content relative">
+                    <ul className='menu p-4 w-48 h-[100%] sm:w-80 bg-base-200 text-base-content relative'>
                         <li className='w-fit absolute right-2 z-50'>
                             <button onClick={hideDrawer}>
                                 <AiFillCloseCircle size={24} />
                             </button>
                         </li>
                         <li>
-                            <Link to={"/"}>Home</Link>
+                            <Link to="/"> Home </Link>
                         </li>
                         {isLoggedIn && role === "ADMIN" && (
                             <li>
-                                <Link to={"/admin/dashboard"}>Admin Dashboard</Link>
+                                <Link to="/admin/dashboard">Admin Dashboard</Link>
                             </li>
-
                         )
 
                         }
                         {isLoggedIn && role === "ADMIN" && (
                             <li>
-                                <Link to={"/course/create"}>Create New Course</Link>
+                                <Link to="/course/create">Create Course</Link>
                             </li>
-
                         )
 
                         }
                         <li>
-                            <Link to={"/about"}>AboutUs</Link>
+                            <Link to="/about"> About us </Link>
                         </li>
                         <li>
-                            <Link to={"/contact"}>ContactUs</Link>
+                            <Link to="/contact"> Contact us </Link>
                         </li>
                         <li>
-                            <Link to={"/courses"}>All Course</Link>
+                            <Link to="/courses"> All courses </Link>
                         </li>
+
                         {!isLoggedIn ? (
-                            <li className='absolute bottom-4 w-[90%]'>
-                                <div className='w-full flex items-center justify-center'>
-                                    <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
+                            <li className="absolute bottom-4 w-[90%]">
+                                <div className="w-full flex items-center justify-center">
+                                    <button className="btn-primary px-4 py-1 font-semibold rounded-md w-full">
                                         <Link to="/login">Login</Link>
                                     </button>
-                                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
-                                        <Link to="/signup">SignUp</Link>
+                                    <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
+                                        <Link to="/signup">Signup</Link>
                                     </button>
                                 </div>
                             </li>
                         ) : (
-                            <li className='absolute bottom-4 w-[90%]'>
-                                <div className='w-full flex items-center justify-center'>
-                                    <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
+                            <li className="absolute bottom-4 w-[90%]">
+                                <div className="w-full flex items-center justify-center">
+                                    <button className="btn-primary px-4 py-1 font-semibold rounded-md w-full">
                                         <Link to="/user/profile">Profile</Link>
                                     </button>
-                                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
-                                        <Link onClick={onLogout}>Loguot</Link>
+                                    <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
+                                        <Link onClick={onLogout}>Logout</Link>
                                     </button>
                                 </div>
                             </li>
@@ -109,8 +109,11 @@ function HomeLayout({ children }) {
                     </ul>
                 </div>
             </div>
+            <Navbar />
             {children}
+
             <Footer />
+
         </div>
     )
 }
