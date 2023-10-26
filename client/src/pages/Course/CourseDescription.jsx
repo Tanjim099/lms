@@ -1,13 +1,23 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import HomeLayout from "../../layouts/HomeLayout"
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HiringPartner from "../../components/HiringPartner";
+import { getUserData } from "../../redux/slices/authSlice";
 
 function CourseDescription() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const { state } = useLocation();
     const { role, data } = useSelector((state) => state.auth)
+    useEffect(() => {
+        (
+            async () => {
+
+                await dispatch(getUserData())
+            }
+        )()
+    }, [])
     console.log(data)
     return (
         <HomeLayout>

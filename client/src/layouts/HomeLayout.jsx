@@ -38,8 +38,8 @@ function HomeLayout({ children }) {
             navigate("/")
     }
     return (
-        <div className="min-h-[90vh] sticky top-0">
-            <div className="drawer absolute left-0 z-50 w-auto">
+        <div className="min-h-[90vh] w-[100%]">
+            <div className="drawer absolute left-0 z-50 w-auto ">
                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <label htmlFor="my-drawer" className=''>

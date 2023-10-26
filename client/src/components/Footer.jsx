@@ -3,7 +3,7 @@ function Footer() {
     const newDate = new Date();
     const year = newDate.getFullYear();
     return (
-        <footer className="relative left-0 bottom-0 h-[10vh] py-5 px-20 flex flex-col sm:flex-row items-center justify-between text-white bg-gray-900">
+        <footer className="relative left-0 bottom-0 min-h-[10vh] py-5 px-20 flex flex-col sm:flex-row items-center justify-between text-white bg-gray-900">
             <section className="text-lg">
                 Copyright {year} | All rights reserved
             </section>

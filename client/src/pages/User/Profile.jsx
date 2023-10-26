@@ -1,14 +1,18 @@
 import { useDispatch, useSelector } from "react-redux"
 import HomeLayout from "../../layouts/HomeLayout";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getUserData } from "../../redux/slices/authSlice";
 
 function Profile() {
     const dispatch = useDispatch();
-    const userData = useSelector((state) => state?.auth?.data);
-    console.log(userData)
-    console.log(userData?.fullName)
+    // const [userData, setUserData] = useState()
+    const datas = useSelector((state) => state?.auth?.data);
+    // console.log(userData)
+    const data = localStorage.getItem("data");
+    const allData = JSON.parse(data)
+    const userData = allData.user
+
     console.log(userData?.subscription?.status)
     async function ongetProfile() {
         await dispatch(getUserData())
@@ -49,7 +53,7 @@ function Profile() {
                         </Link>
                     </div>
                     {
-                        userData?.status !== "active" && (
+                        userData?.subscription?.status !== "active" && (
                             <button className="w-full bg-red-600 hover:bg-red-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2">
                                 Cancel Subscription
                             </button>

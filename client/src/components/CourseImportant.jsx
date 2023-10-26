@@ -1,6 +1,6 @@
 function CourseImportant() {
     return (
-        <div class="flex medium:!flex-row items-center justify-center large:!justify-between gap-y-6 pt-8 large:pt-8 flex-wrap gap-x-5 w-full">
+        <div class="flex medium:!flex-row items-center justify-center large:!justify-between gap-y-6 pt-8 mt-10 large:pt-8 flex-wrap gap-x-5 w-full">
             <div class="bg-[#0074e9] drop-shadow-sm	 rounded-lg p-[14px] m-2 font-nunitoSans flex items-center justify-start py-6 px-6 gap-x-4 w-80 regular:!w-72 large:!w-[23%] !m-0 large:!self-start shadow-md">
                 <img src="https://pwskills.com/images/homePage/statistics1.png" alt="" />
                 <div>

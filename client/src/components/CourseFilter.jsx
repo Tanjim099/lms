@@ -39,14 +39,14 @@ function CourseFilter() {
     }, [courseData])
     return (
         <div className=" mt-5 m-auto py-4 px-6 bg-[#182238]">
-            <div className="w-[90%] m-auto">
+            <div className="sm:w-[90%] m-auto ">
                 <h1 className="text-[#0096ff] text-4xl font-semibold">Explore Courses</h1>
                 <p className="py-5 text-white font-semibold text-xl">Master job relevant skills from our broad selection of courses</p>
-                <div className="flex">
-                    <div className=" w-[24%]">
+                <div className="sm:w-[100%] flex sm:flex-row flex-col">
+                    <div className="sm:w-[24%] w-[100%">
                         <h3 className="text-2xl text-white font-semibold mb-4">Categories</h3>
                         <hr className="mt-5" />
-                        <div className="mt-6 flex flex-col items-start gap-2">
+                        <div className="my-6 flex sm:flex-col flex-wrap items-start gap-2">
                             <span className="bg-[#0096ff] py-1 px-2 rounded-3xl text-white" id="DSA" onClick={handleFilter}>Data Structures & Algorithms</span>
                             <span className="bg-[#0096ff] py-1 px-2  rounded-3xl text-white" id="program" onClick={handleFilter}>Programming language</span>
                             <span className="bg-[#0096ff] py-1 px-2  rounded-3xl text-white" id="database" onClick={handleFilter}>Database</span>
@@ -57,7 +57,7 @@ function CourseFilter() {
                             <span className="bg-[#0096ff] py-1 px-2  rounded-3xl text-white" id="Digital Marketing" onClick={handleFilter}>Digital Marketing</span>
                         </div>
                     </div>
-                    <div className="w-[76%]  flex flex-wrap gap-5">
+                    <div className="sm:w-[76%] w-[100%]  flex flex-wrap gap-5">
                         {
                             filteredData?.map((element) => {
                                 return <CourseCard key={element._id} data={element} />

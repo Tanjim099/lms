@@ -16,12 +16,14 @@ import { getAllCourses } from '../redux/slices/courseSlice';
 import UnlimitedLiveLearning from '../components/UnlimitedLiveLearning';
 import CourseFilter from '../components/CourseFilter';
 import HiringPartner from '../components/HiringPartner';
+import Mentors from '../components/Mentors';
+import Accordion from '../components/Accordion';
 function Home() {
 
     return (
         <HomeLayout>
-            <div className="pt-10 text-black flex flex-row items-center justify-center gap-10 mx-16 h-[90vh]">
-                <div className="w-1/2 space-y-6">
+            <div className="pt-10 w-[100%] text-black flex sm:flex-row flex-col-reverse items-center justify-center gap-10 sm:mx-16 px-5 h-[90vh]">
+                <div className="sm:w-1/2 w-[100%] space-y-6">
                     <h1 className="font-['Sorce Sans Pro'] font-semibold text-[32px] lg:text-[64px] text-[#FBFAFFE6]">Find out best <span className="text-[#0074e9] font-bold">Online courses</span></h1>
                     <p className="font-['Nunito'] font-regular text-[#FBFAFFE6] text-[14px] lg:text-[20px] mt-[8px]">
                         We have a large library of courses taugh by highly skilled and quilified at a very affordable cost.
@@ -39,7 +41,7 @@ function Home() {
                         </Link>
                     </div>
                 </div>
-                <div className='w-1/2 flex items-center justify-center'>
+                <div className='sm:w-1/2 w-[100%] flex items-center justify-center' >
                     <img src={homePage} alt="" />
                 </div>
             </div>
@@ -54,8 +56,13 @@ function Home() {
                 }
             </div> */}
             {/* <Ecosystem /> */}
-            <HiringPartner />
-            <Swiper
+            <div className='w-[87%] m-auto mt-14'>
+                <Mentors />
+            </div>
+            <div className='w-[87%] m-auto mt-14'>
+                <HiringPartner />
+            </div>
+            {/* <Swiper
                 effect={'cards'}
                 grabCursor={true}
                 modules={[EffectCards]}
@@ -70,7 +77,10 @@ function Home() {
                 <SwiperSlide>Slide 7</SwiperSlide>
                 <SwiperSlide>Slide 8</SwiperSlide>
                 <SwiperSlide>Slide 9</SwiperSlide>
-            </Swiper>
+            </Swiper> */}
+            <div className='w-[87%] m-auto mt-14'>
+                <Accordion />
+            </div>
         </HomeLayout>
     )
 }
